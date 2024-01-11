@@ -1,7 +1,7 @@
 Name:		numactl
 Summary:	Library for tuning for Non Uniform Memory Access machines
-Version:	2.0.12
-Release:	13%{?dist}
+Version:	2.0.16
+Release:	1%{?dist}
 # libnuma is LGPLv2 and GPLv2
 # numactl binaries are GPLv2 only
 License:	GPLv2
@@ -37,19 +37,6 @@ ExcludeArch: s390 %{arm}
 #
 # Patches 601 onward are generic patches
 #
-Patch601 :0001-Fix-node_list-with-memory-less-nodes.patch
-Patch602 :0002-numademo-fix-wrong-node-input.patch
-Patch603 :0003-Fix-distance-test-to-include-all-existing-nodes.patch
-Patch604 :0004-Fix-regress-test-numastat-function-and-few-test-fixe.patch
-Patch605 :0005-Correct-calculation-of-nr_nodes-and-re-enable-move_p.patch
-Patch606 :0006-Fix-move_pages-test-for-non-contiguous-nodes.patch
-Patch607 :0007-Fix-Add-ShmemHugePages-and-ShmemPmdMapped-to-system_.patch
-Patch608 :0008-memhog-add-man-page.patch
-Patch609: 0009-numastat.8-clarify-that-information-relates-to-resid.patch
-Patch610: 0010-Fix-crashes-when-using-the-touch-option.patch
-Patch611: 0011-Added-memhog.8-to-Makefile.am.patch 
-Patch612: 0012-Update-manpage-description-of-localalloc-option.patch
-Patch613: 0013-libnuma-make-numa_police_memory-free-of-race.patch
 
 
 
@@ -80,19 +67,6 @@ Provides development headers for numa library calls
 %setup -q -n %{name}-%{version}
 
 #patch
-%patch601 -p1
-%patch602 -p1
-%patch603 -p1
-%patch604 -p1
-%patch605 -p1
-%patch606 -p1
-%patch607 -p1
-%patch608 -p1
-%patch609 -p1
-%patch610 -p1
-%patch611 -p1
-%patch612 -p1
-%patch613 -p1
 
 
 %build
