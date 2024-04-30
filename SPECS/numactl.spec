@@ -1,7 +1,7 @@
 Name:		numactl
 Summary:	Library for tuning for Non Uniform Memory Access machines
 Version:	2.0.16
-Release:	1%{dist}
+Release:	3%{dist}
 # libnuma is LGPLv2 and GPLv2
 # numactl binaries are GPLv2 only
 License:	GPLv2
@@ -37,6 +37,7 @@ ExcludeArch: s390 %{arm}
 #
 # Patches 601 onward are generic patches
 #
+Patch601: 0001-fix-typo-in-memhog.8.patch
 
 
 %description
@@ -107,6 +108,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*.3*
 
 %changelog
+* Thu Sep 14 2023 Pingfan Liu <piliu@redhat.com> - 2.0.16-2
+- fix typo in memhog.8
+
 * Wed Nov 23 2022 Pingfan Liu <piliu@redhat.com> - 2.0.14-9
 - Dummy release to get s390x binary in errata
 
