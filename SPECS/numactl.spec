@@ -1,7 +1,7 @@
 Name:		numactl
 Summary:	Library for tuning for Non Uniform Memory Access machines
 Version:	2.0.16
-Release:	1%{?dist}
+Release:	4%{?dist}
 # libnuma is LGPLv2 and GPLv2
 # numactl binaries are GPLv2 only
 License:	GPLv2
@@ -37,6 +37,7 @@ ExcludeArch: s390 %{arm}
 #
 # Patches 601 onward are generic patches
 #
+Patch601: 0001-fix-typo-in-memhog.8.patch
 
 
 
@@ -67,6 +68,7 @@ Provides development headers for numa library calls
 %setup -q -n %{name}-%{version}
 
 #patch
+%patch601 -p1
 
 
 %build
@@ -112,6 +114,10 @@ make DESTDIR=$RPM_BUILD_ROOT install
 %{_mandir}/man3/*.3*
 
 %changelog
+* Thu Sep 14 2023 Pingfan Liu <piliu@redhat.com> - 2.0.16-2
+- fix typo in memhog.8
+- Remove contained patches
+
 * Wed May 12 2021 Pingfan Liu <piliu@redhat.com> - 2.0.12-13
 - libnuma: make numa_police_memory() free of race
 
