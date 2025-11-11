@@ -1,7 +1,7 @@
 Name:		numactl
 Summary:	Library for tuning for Non Uniform Memory Access machines
 Version:	2.0.19
-Release:	1%{?dist}
+Release:	2%{?dist}
 # libnuma is LGPLv2 and GPLv2
 # numactl binaries are GPLv2 only
 License:	GPL-2.0-only
@@ -14,6 +14,8 @@ BuildRequires: libtool automake autoconf
 ExcludeArch: s390 %{arm}
 
 # Patch601: 0001-Fix-fallback-for-set_mempolicy_home_node-syscall.patch
+Patch001: 0001-libnuma.c-Introduce-numa_preferred_err.patch
+Patch002: 0002-doc-Update-man-for-numa_preferred_err.patch
 
 %description
 Simple NUMA policy support. It consists of a numactl program to run
@@ -78,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 %{_mandir}/man3/*.3*
 
 %changelog
+* Mon Apr 21 2025 Pingfan Liu <piliu@redhat.com> -  2.0.19-2
+- Fix numa_preferred() returned value
+
 * Mon Nov 18 2024 Pingfan Liu <piliu@redhat.com> -  2.0.19-1
 - Rebase to v2.0.19
 
