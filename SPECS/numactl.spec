@@ -1,7 +1,7 @@
 Name:		numactl
 Summary:	Library for tuning for Non Uniform Memory Access machines
 Version:	2.0.19
-Release:	2%{?dist}
+Release:	3%{?dist}
 # libnuma is LGPLv2 and GPLv2
 # numactl binaries are GPLv2 only
 License:	GPL-2.0-only
@@ -16,6 +16,7 @@ ExcludeArch: s390 %{arm}
 # Patch601: 0001-Fix-fallback-for-set_mempolicy_home_node-syscall.patch
 Patch001: 0001-libnuma.c-Introduce-numa_preferred_err.patch
 Patch002: 0002-doc-Update-man-for-numa_preferred_err.patch
+Patch003: 0003-numastat-command-fails-on-LPAR-which-is-not-having-n.patch
 
 %description
 Simple NUMA policy support. It consists of a numactl program to run
@@ -23,6 +24,7 @@ other programs with a specific NUMA policy.
 
 %package libs
 Summary: libnuma libraries
+Requires: %{name}-libs = %{version}-%{release}
 # There is a tiny bit of GPLv2 code in libnuma.c
 License: LGPL-2.1-only AND GPL-2.0-only
 
